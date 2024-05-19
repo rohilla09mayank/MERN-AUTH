@@ -1,6 +1,7 @@
 // IMPORTS
 import express from "express";
 import userRoutes from "./routes/userRoutes.js";
+import cookieParser from "cookie-parser";
 import connectDB from "./config/db.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import dotenv from "dotenv";
@@ -20,6 +21,9 @@ const app = express();
 // BODY PARSER
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// COOKIE PARSER
+app.use(cookieParser());
 
 // ROUTE : /api/users
 app.use("/api/users", userRoutes);
